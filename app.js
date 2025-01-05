@@ -13,7 +13,8 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
 
 
-const session = require("express-session");
+// const session = require("express-session");
+const session = require('cookie-session');
 const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
 
