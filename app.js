@@ -13,8 +13,8 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
 
 
-// const session = require("express-session");
-const session = require('cookie-session');
+const session = require("express-session");
+// const session = require('cookie-session');
 const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
 
@@ -74,14 +74,14 @@ passport.serializeUser(function(user, cb) {
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: process.env.CALLBACK_URL || "http://localhost:3000/auth/google/secrets",
+    callbackURL: "https://secret-vault-3-production.up.railway.app/auth/google/secrets",
     userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
-},
-  function(accessToken, refreshToken, profile, cb) {
-    User.findOrCreate({ googleId: profile.id }, function (err, user) {
-      return cb(err, user);
-    });
-  }
+    },
+    function(accessToken, refreshToken, profile, cb) {
+        User.findOrCreate({ googleId: profile.id }, function (err, user) {
+        return cb(err, user);
+        });
+    }
 ));
 
 
@@ -89,12 +89,12 @@ app.get("/", function(req, res){
     res.render("home"); 
 });
 
-app.get('/auth/google',
-    passport.authenticate('google', { scope: ['profile'] })
+app.get("/auth/google",
+    passport.authenticate("google", { scope: ["profile"]})
 );
 
 app.get("/auth/goolge/secrets", 
-    passport.authenticate('google', { failureRedirect: '/login' }),
+    passport.authenticate('google', {failureRedirect: '/login'}),
     function(req, res) {
         // Successful authentication, redirect secrets.
     res.redirect('/secrets');
@@ -192,8 +192,8 @@ app.post("/submit", async function(req, res){
 
 
 
-const port = process.env.PORT || 3000;
+// const port = process.env.PORT || 3000;
 
-app.listen(port, function(){
+app.listen(3000, function(){
     console.log("Server started on port 3000");
 });
