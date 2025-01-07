@@ -73,6 +73,6 @@ Contributions are welcome! Please follow these steps:
 ## **7. Contact**
 For any queries or feedback, feel free to reach out:
 - **Email**: `umar040903@gmail.com`
-- **LinkedIn**: [Mohammad Umar Shaikh](https://www.linkedin.com/in/mohammad-umar-b914a3227/)
+- **LinkedIn**: [Mohammad Umar Shaikh](https://www.linkedin.com/in/mohammad-umar-shaikh-b914a3227/)
 
 ---
